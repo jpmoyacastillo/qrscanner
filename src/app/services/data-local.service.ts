@@ -17,7 +17,7 @@ export class DataLocalService {
     private navCtrl: NavController,
     private iab: InAppBrowser
   ) {
-    //TODO: cargar registros de localstorage
+    //cargar registros de localstorage
     this.cargarStorage();
   }
 
@@ -44,6 +44,10 @@ export class DataLocalService {
       case 'http':
         // abrir navegador web
         this.iab.create(registro.text, '_system');
+        break;
+      case 'geo':
+        this.navCtrl.navigateForward(`/tabs/tab2/mapa/${registro.text}`);
+        break;
     }
   }
 }
